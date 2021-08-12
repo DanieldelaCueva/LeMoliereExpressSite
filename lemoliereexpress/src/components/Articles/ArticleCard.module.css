@@ -1,0 +1,11 @@
+.flag{
+    max-width: 3rem;
+    max-height: 5rem;
+    float: right;
+    margin-right: 1rem;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
