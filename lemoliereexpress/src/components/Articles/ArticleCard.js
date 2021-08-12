@@ -37,7 +37,7 @@ const ArticleCard = (props) => {
         <Card.Img variant="top" src={props.article.img_url} />
         <Card.Body>
           <Card.Title>{props.article.title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted"><a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>Auteur: {props.article.author}</a> / <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>Date: {props.article.date}</a> / <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>Rubrique: {props.article.group}</a></Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">Auteur: <a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>{props.article.author}</a> / Date: <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>{props.article.date}</a> / Rubrique: <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>{props.article.group}</a></Card.Subtitle>
           <Card.Text>{getTwenty(props.article.content)}</Card.Text>
           <Button variant="primary" onClick={props.handleShow}>
             Ouvrir

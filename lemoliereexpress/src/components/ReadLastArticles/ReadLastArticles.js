@@ -7,88 +7,8 @@ import ArticleCard from "../Articles/ArticleCard";
 import react, { useState } from "react";
 import ArticleFilter from "../Articles/ArticleFilter";
 
-const ReadLastArticles = () => {
-  const test_articles = [
-    {
-      id: 1,
-      title: "Test",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      validated: false,
-      group: "Science et technologie",
-      language: "English",
-      author: 4,
-    },
-    {
-      id: 2,
-      title: "Another test",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      validated: false,
-      group: "Science et technologie",
-      language: "Español",
-      author: "Daniel De la Cueva",
-    },
-    {
-      id: 3,
-      title: "Test 3",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      validated: false,
-      group: "Science et technologie",
-      language: "Français",
-      author: 4,
-    },
-    {
-      id: 4,
-      title: "Test",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content: "Hola",
-      validated: false,
-      group: "Art et culture",
-      language: "English",
-      author: 4,
-    },
-    {
-      id: 5,
-      title: "Another test",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      validated: false,
-      group: "Science et technologie",
-      language: "Français",
-      author: 4,
-    },
-    {
-      id: 6,
-      title: "Test 3",
-      date: "2021-07-27",
-      img_url:
-        "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      validated: false,
-      group: "Science et technologie",
-      language: "Español",
-      author: 4,
-    },
-  ];
-
-  const test_article = {
+const test_articles = [
+  {
     id: 1,
     title: "Test",
     date: "2021-07-27",
@@ -100,7 +20,89 @@ const ReadLastArticles = () => {
     group: "Science et technologie",
     language: "English",
     author: 4,
-  };
+  },
+  {
+    id: 2,
+    title: "Another test",
+    date: "2021-07-27",
+    img_url:
+      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    validated: false,
+    group: "Science et technologie",
+    language: "Español",
+    author: "Daniel De la Cueva",
+  },
+  {
+    id: 3,
+    title: "Test 3",
+    date: "2021-07-27",
+    img_url:
+      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    validated: false,
+    group: "Science et technologie",
+    language: "Français",
+    author: 4,
+  },
+  {
+    id: 4,
+    title: "Test",
+    date: "2021-07-27",
+    img_url:
+      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+    content: "Hola",
+    validated: false,
+    group: "Art et culture",
+    language: "English",
+    author: 4,
+  },
+  {
+    id: 5,
+    title: "Another test",
+    date: "2021-07-27",
+    img_url:
+      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    validated: false,
+    group: "Science et technologie",
+    language: "Français",
+    author: 4,
+  },
+  {
+    id: 6,
+    title: "Test 3",
+    date: "2021-07-27",
+    img_url:
+      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    validated: false,
+    group: "Science et technologie",
+    language: "Español",
+    author: 4,
+  },
+];
+
+const test_article = {
+  id: 1,
+  title: "Test",
+  date: "2021-07-27",
+  img_url:
+    "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+  content:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  validated: false,
+  group: "Science et technologie",
+  language: "English",
+  author: 4,
+};
+
+const ReadLastArticles = () => {
+  
 
   const [show, setShow] = useState(false);
 

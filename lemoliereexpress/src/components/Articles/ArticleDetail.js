@@ -31,9 +31,9 @@ const ArticleDetail = (props) => {
       </Modal.Header>
       <Image src={props.article.img_url} />
       <Modal.Body>
-        <h6 className={classes.attribs}><a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>Auteur: {props.article.author}</a></h6>
-        <h6 className={classes.attribs}><a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>Date: {props.article.date}</a></h6>
-        <h6 className={classes.attribs}><a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>Rubrique: {props.article.group}</a></h6> <br />
+        <h6 className={classes.attribs}>Auteur: <a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>{props.article.author}</a></h6>
+        <h6 className={classes.attribs}>Date: <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>{props.article.date}</a></h6>
+        <h6 className={classes.attribs}>Rubrique: <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>{props.article.group}</a></h6> <br />
         <p>{props.article.content}</p>
       </Modal.Body>
       <Modal.Footer>
