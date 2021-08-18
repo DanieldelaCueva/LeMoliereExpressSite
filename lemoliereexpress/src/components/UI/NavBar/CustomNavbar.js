@@ -12,7 +12,7 @@ const CustomNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className={classes.item}>Acceuil</Nav.Link>
+            <Nav.Link href="#home" className={classes.item}>Accueil</Nav.Link>
             <Nav.Link href="#link" className={classes.item}>Connnaisez nous</Nav.Link>
             <Nav.Link className={classes.item}>Lire Derniers Articles</Nav.Link>
             <Nav.Link className={classes.item}>Éditions Publiées</Nav.Link>

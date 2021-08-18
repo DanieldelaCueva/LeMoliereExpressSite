@@ -1,11 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
-import ArticleDetail from "../Articles/ArticleDetail";
-import ArticleCard from "../Articles/ArticleCard";
+import ArticleDetail from "../../Articles/ArticleDetail";
+import ArticleCard from "../../Articles/ArticleCard";
 
-import react, { useState } from "react";
-import ArticleFilter from "../Articles/ArticleFilter";
+import react, { useState, useEffect } from "react";
+import ArticleFilter from "../../Articles/ArticleFilter";
+
+import classes from './ReadLastArticles.module.css';
 
 const test_articles = [
   {
@@ -32,7 +34,7 @@ const test_articles = [
     validated: false,
     group: "Science et technologie",
     language: "Español",
-    author: "Daniel De la Cueva",
+    author: "Daniel De la Cueva, Sabina Gómez",
   },
   {
     id: 3,
@@ -101,9 +103,7 @@ const test_article = {
   author: 4,
 };
 
-const ReadLastArticles = () => {
-  
-
+const ReadLastArticles = props => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -174,6 +174,14 @@ const ReadLastArticles = () => {
     }
   };
 
+  useEffect(() => {
+    if(articleList.length === 0){
+      props.setFooterFixed(true);
+    } else {
+      props.setFooterFixed(false);
+    }
+  }, [articleList]);
+
   return (
     <div>
       <Container>
@@ -185,15 +193,21 @@ const ReadLastArticles = () => {
           setActualFilter={setActualFilter}
         />
         <Row>
-          {articleList.map((article) => (
-            <ArticleCard
-              key={article.id}
-              handleShow={() => handleShow(article.id)}
-              article={article}
-              setTypedSearch={setTypedSearch}
-              setActualFilter={setActualFilter}
-            />
-          ))}
+          {articleList.lenght === 0 ||
+            articleList.map((article) => (
+              <ArticleCard
+                key={article.id}
+                handleShow={() => handleShow(article.id)}
+                article={article}
+                setTypedSearch={setTypedSearch}
+                setActualFilter={setActualFilter}
+              />
+            ))}
+          {articleList.length !== 0 || (
+            <Container className={classes.not_found__container}>
+              <h2 className={classes.not_found__h2}>Aucun article n'a été trouvé</h2>
+            </Container>
+          )}
         </Row>
       </Container>
 

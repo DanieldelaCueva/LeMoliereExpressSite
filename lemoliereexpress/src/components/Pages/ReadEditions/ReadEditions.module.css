@@ -1,0 +1,19 @@
+.container{
+    margin-top: 6rem;
+    height: 100%;
+}
+
+.wrapper{
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30rem;
+
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pdf{
+    height: 20rem;
+    width: inherit;
+}
