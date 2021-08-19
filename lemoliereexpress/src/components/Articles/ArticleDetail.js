@@ -4,7 +4,10 @@ import Image from "react-bootstrap/Image";
 
 import classes from "./ArticleDetail.module.css";
 
+import { useTranslation } from "react-i18next";
+
 const ArticleDetail = (props) => {
+  const { t } = useTranslation();
 
   const onClickAuthor = author => {
     props.setTypedSearch(author.toString());
@@ -31,14 +34,14 @@ const ArticleDetail = (props) => {
       </Modal.Header>
       <Image src={props.article.img_url} />
       <Modal.Body>
-        <h6 className={classes.attribs}>Auteur: <a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>{props.article.author}</a></h6>
-        <h6 className={classes.attribs}>Date: <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>{props.article.date}</a></h6>
-        <h6 className={classes.attribs}>Rubrique: <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>{props.article.group}</a></h6> <br />
+        <h6 className={classes.attribs}>{t('lastarticles_author')}: <a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>{props.article.author}</a></h6>
+        <h6 className={classes.attribs}>{t('lastarticles_date')}: <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>{props.article.date}</a></h6>
+        <h6 className={classes.attribs}>{t('lastarticles_group')}: <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>{props.article.group}</a></h6> <br />
         <p>{props.article.content}</p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>
-          Fermer
+        {t('articledetail_close')}
         </Button>
       </Modal.Footer>
     </Modal>

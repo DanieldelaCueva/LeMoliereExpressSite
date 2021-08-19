@@ -1,0 +1,40 @@
+{
+  "navbar_home": "Home",
+  "navbar_aboutus": "About Us",
+  "navbar_readlastarticles": "Read Last Articles",
+  "navbar_publishededitions": "Published Editions",
+  
+  "home_welcome": "Welcome to Molière Express",
+  "home_interview": "Interview at Institut Français.",
+  "home_visite": "Visit to Heraldo de Aragón.",
+
+  "aboutus_title": "About Us",
+  "aboutus_text_1": "Le Molière Express is the newspaper of the Lycée Français Molière. It is produced by middle and high school students, whose aim is to create a newspaper which covers a wide variety of interesting subjects.",
+  "aboutus_text_2": "Indeed, it’s a project that allows students to express themselves, learn and meet pupils from other grades.",
+  "aboutus_text_3": "The project was initially started by Sabina Gómez (1ère) in November 2020. At the moment, two other students, Daniel De la Cueva (1ère) and Zoe Hinojo (Terminale), are part of the team and help out with management and organization of the school newspaper.",
+  "aboutus_text_4": "If you would like to contact our team or/and receive the latest copy, go to the e-mail icon at the bottom right of this page.",
+
+  "quote_rec": "Chief Editor",
+
+  
+  "teamtable_title": "Our team",
+  "teamtable_staff": "Staff",
+  "table_names": "Name",
+  "table_function": "Function",
+  "table_grade": "Grade",
+
+  "lastarticle_notfound": "No articles found",
+
+  "articlefilter_filterby": "Filter by:",
+  "lastarticles_title": "Title",
+  "lastarticles_author": "Author",
+  "lastarticles_date": "Date",
+  "lastarticles_group": "Group",
+  "lastarticles_language": "Language",
+  "lastarticles_search": "Search...",
+
+  "articlecard_open": "Open",
+  "articledetail_close": "Close"
+}
+
+  

@@ -23,9 +23,9 @@ function App() {
         document.getElementById("navbar")
       )}
       {/* <Home setFooterFixed={setFooterFixed}/> */}
-      <AboutUs />
+      {/* <AboutUs /> */}
       {/* <ReadLastArticles setFooterFixed={setFooterFixed}/> */}
-      {/* <ReadEditions /> */}
+      <ReadEditions />
       {ReactDOM.createPortal(
         <Footer className="footer" fixed={footerFixed}/>,
         document.getElementById("footer")

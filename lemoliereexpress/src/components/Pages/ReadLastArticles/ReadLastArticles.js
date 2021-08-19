@@ -9,6 +9,8 @@ import ArticleFilter from "../../Articles/ArticleFilter";
 
 import classes from './ReadLastArticles.module.css';
 
+import { useTranslation } from "react-i18next";
+
 const test_articles = [
   {
     id: 1,
@@ -104,6 +106,8 @@ const test_article = {
 };
 
 const ReadLastArticles = props => {
+  const { t } = useTranslation();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -116,7 +120,7 @@ const ReadLastArticles = props => {
   const [articleList, setArticleList] = useState(test_articles);
   const [detailedArticle, setDetailedArticle] = useState();
 
-  const [actualFilter, setActualFilter] = useState("Titre");
+  const [actualFilter, setActualFilter] = useState(t('lastarticles_title'));
 
   const [typedSearch, setTypedSearch] = useState("");
 
@@ -205,7 +209,7 @@ const ReadLastArticles = props => {
             ))}
           {articleList.length !== 0 || (
             <Container className={classes.not_found__container}>
-              <h2 className={classes.not_found__h2}>Aucun article n'a été trouvé</h2>
+              <h2 className={classes.not_found__h2}>{t('lastarticle_notfound')}</h2>
             </Container>
           )}
         </Row>

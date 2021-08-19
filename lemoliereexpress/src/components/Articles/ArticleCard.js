@@ -5,11 +5,15 @@ import Button from "react-bootstrap/Button";
 
 import classes from "./ArticleCard.module.css";
 
+import { useTranslation } from "react-i18next";
+
 const spain_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/spain.png`;
 const france_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/france.png`;
 const uk_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/uk.png`;
 
 const ArticleCard = (props) => {
+  const { t } = useTranslation();
+
   const getTwenty = (text) => {
     let new_string = "";
     for (let i = 0; i < 20; i++) {
@@ -42,7 +46,7 @@ const ArticleCard = (props) => {
         <Card.Body>
           <Card.Title>{props.article.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Auteur:{" "}
+            {t('lastarticles_author')}:{" "}
             <a
               className={classes.link}
               href="#"
@@ -50,7 +54,7 @@ const ArticleCard = (props) => {
             >
               {props.article.author}
             </a>{" "}
-            / Date:{" "}
+            / {t('lastarticles_date')}:{" "}
             <a
               className={classes.link}
               href="#"
@@ -58,7 +62,7 @@ const ArticleCard = (props) => {
             >
               {props.article.date}
             </a>{" "}
-            / Rubrique:{" "}
+            / {t('lastarticles_group')}:{" "}
             <a
               className={classes.link}
               href="#"
@@ -69,7 +73,7 @@ const ArticleCard = (props) => {
           </Card.Subtitle>
           <Card.Text>{getTwenty(props.article.content)}</Card.Text>
           <Button variant="primary" onClick={props.handleShow}>
-            Ouvrir
+            {t('articlecard_open')}
           </Button>
           {props.article.language !== "Español" || (
             <Image

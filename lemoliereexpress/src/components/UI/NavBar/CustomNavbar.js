@@ -4,7 +4,14 @@ import Container from "react-bootstrap/Container";
 
 import classes from './CustomNavbar.module.css';
 
+import LangDropDown from "../LangDropDown/LangDropDown";
+
+import { useTranslation } from "react-i18next";
+
 const CustomNavbar = () => {
+
+  const { t } = useTranslation();
+
   return (
     <Navbar fixed="top" bg="light" variant="light" expand="lg" className={classes.navbar}>
       <Container>
@@ -12,10 +19,11 @@ const CustomNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className={classes.item}>Accueil</Nav.Link>
-            <Nav.Link href="#link" className={classes.item}>Connnaisez nous</Nav.Link>
-            <Nav.Link className={classes.item}>Lire Derniers Articles</Nav.Link>
-            <Nav.Link className={classes.item}>Éditions Publiées</Nav.Link>
+            <Nav.Link href="#home" className={classes.item}>{t('navbar_home')}</Nav.Link>
+            <Nav.Link href="#link" className={classes.item}>{t('navbar_aboutus')}</Nav.Link>
+            <Nav.Link className={classes.item}>{t('navbar_readlastarticles')}</Nav.Link>
+            <Nav.Link className={classes.item}>{t('navbar_publishededitions')}</Nav.Link>
+            <Nav.Link><LangDropDown /></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

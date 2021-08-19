@@ -1,13 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Image from "react-bootstrap/Image";
 
 import classes from "./ArticleFilter.module.css";
 
 import react, { useEffect } from "react";
 
+import { useTranslation } from "react-i18next";
+
 const ArticleFilter = (props) => {
+  const { t } = useTranslation();
+
   const onSelectFilterHandler = (selectedFilter) => {
     props.setActualFilter(selectedFilter);
   };
@@ -25,7 +28,7 @@ const ArticleFilter = (props) => {
   return (
     <Container className={classes.container}>
       <label htmlFor="dropdown-basic-button" className={classes.label}>
-        Filtrer par:
+        {t('articlefilter_filterby')}
       </label>
 
       <DropdownButton
@@ -33,20 +36,20 @@ const ArticleFilter = (props) => {
         title={props.actualFilter}
         className={classes.dropdown}
       >
-        <Dropdown.Item onClick={() => onSelectFilterHandler("Titre")}>
-          Titre
+        <Dropdown.Item onClick={() => onSelectFilterHandler(t('lastarticles_title'))}>
+          {t('lastarticles_title')}
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => onSelectFilterHandler("Auteur")}>
-          Auteur
+        <Dropdown.Item onClick={() => onSelectFilterHandler(t('lastarticles_author'))}>
+        {t('lastarticles_author')}
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => onSelectFilterHandler("Date")}>
-          Date
+        <Dropdown.Item onClick={() => onSelectFilterHandler(t('lastarticles_date'))}>
+        {t('lastarticles_date')}
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => onSelectFilterHandler("Rubrique")}>
-          Rubrique
+        <Dropdown.Item onClick={() => onSelectFilterHandler(t('lastarticles_group'))}>
+        {t('lastarticles_group')}
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => onSelectFilterHandler("Langue")}>
-          Langue
+        <Dropdown.Item onClick={() => onSelectFilterHandler(t('lastarticles_language'))}>
+        {t('lastarticles_language')}
         </Dropdown.Item>
       </DropdownButton>
 
@@ -54,7 +57,7 @@ const ArticleFilter = (props) => {
         <input
           className={classes.searchBar}
           type="text"
-          placeholder="Cherchez..."
+          placeholder={t('lastarticles_search')}
           onChange={onTypeHandler}
           value={props.typedSearch}
         />
