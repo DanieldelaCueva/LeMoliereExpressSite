@@ -7,7 +7,9 @@
     color: rgb(83, 83, 83);
 }
 
-.link{
+.link,
+.link_nodec,
+.link_nodec:hover{
     text-decoration: none;
     color: inherit;
 }

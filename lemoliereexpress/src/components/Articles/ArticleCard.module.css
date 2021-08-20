@@ -1,11 +1,17 @@
 .flag{
-    max-width: 3rem;
-    max-height: 5rem;
+    width: 3.75rem;
+    height: 1.75rem;
     float: right;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
 }
 
 .link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.link_nodec,
+.link_nodec:hover{
     text-decoration: none;
     color: inherit;
 }

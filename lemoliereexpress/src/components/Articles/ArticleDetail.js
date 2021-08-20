@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -6,42 +8,62 @@ import classes from "./ArticleDetail.module.css";
 
 import { useTranslation } from "react-i18next";
 
+import { Link, useParams } from "react-router-dom";
+
+const test_article = {
+  id: 1,
+  title: "Test",
+  date: "2021-07-27",
+  img_url:
+    "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
+  content:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  validated: false,
+  group: "Science et technologie",
+  language: "English",
+  author: 4,
+};
+
 const ArticleDetail = (props) => {
+
+  const params = useParams();
+  const article_id = params.articleId;
+  console.log(article_id);
+  
+  const [detailedArticle, setDetailedArticle] = useState();
+
   const { t } = useTranslation();
 
   const onClickAuthor = author => {
     props.setTypedSearch(author.toString());
     props.setActualFilter("Auteur");
-    props.handleClose();
   };
 
   const onClickDate = date => {
     props.setTypedSearch(date.toString());
     props.setActualFilter("Date");
-    props.handleClose();
   };
 
   const onClickGroup = group => {
     props.setTypedSearch(group.toString());
     props.setActualFilter("Rubrique");
-    props.handleClose();
   };
 
   return (
-    <Modal centered show={props.show} onHide={props.handleClose} dialogClassName={classes.modal}>
+    <Modal centered show={true} onHide={props.handleClose} dialogClassName={classes.modal}>
       <Modal.Header>
-        <Modal.Title>{props.article.title}</Modal.Title>
+        <Modal.Title>{test_article.title}</Modal.Title>
       </Modal.Header>
-      <Image src={props.article.img_url} />
+      <Image src={test_article.img_url} alt="Article image" />
       <Modal.Body>
-        <h6 className={classes.attribs}>{t('lastarticles_author')}: <a className={classes.link} href="#" onClick={() => onClickAuthor(props.article.author)}>{props.article.author}</a></h6>
-        <h6 className={classes.attribs}>{t('lastarticles_date')}: <a className={classes.link} href="#" onClick={() => onClickDate(props.article.date)}>{props.article.date}</a></h6>
-        <h6 className={classes.attribs}>{t('lastarticles_group')}: <a className={classes.link} href="#" onClick={() => onClickGroup(props.article.group)}>{props.article.group}</a></h6> <br />
-        <p>{props.article.content}</p>
+        <h6 className={classes.attribs}>{t('lastarticles_author')}: <Link className={classes.link} onClick={() => onClickAuthor(test_article.author)} to="/read-last-articles">{test_article.author}</Link></h6>
+        <h6 className={classes.attribs}>{t('lastarticles_date')}: <Link className={classes.link} onClick={() => onClickDate(test_article.date)} to="/read-last-articles">{test_article.date}</Link></h6>
+        <h6 className={classes.attribs}>{t('lastarticles_group')}: <Link className={classes.link} onClick={() => onClickGroup(test_article.group)} to="/read-last-articles">{test_article.group}</Link></h6> <br />
+        <p>{test_article.content}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.handleClose}>
-        {t('articledetail_close')}
+        <Button variant="secondary">
+          <Link className={classes.link_nodec} to="/read-last-articles">{t('articledetail_close')}</Link>
         </Button>
       </Modal.Footer>
     </Modal>

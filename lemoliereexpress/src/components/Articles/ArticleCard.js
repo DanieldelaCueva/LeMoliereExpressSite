@@ -1,5 +1,4 @@
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
@@ -7,10 +6,7 @@ import classes from "./ArticleCard.module.css";
 
 import { useTranslation } from "react-i18next";
 
-const spain_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/spain.png`;
-const france_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/france.png`;
-const uk_flag_path = `${process.env.PUBLIC_URL}/assets/images/ArticleCard/uk.png`;
-
+import { Link } from "react-router-dom";
 const ArticleCard = (props) => {
   const { t } = useTranslation();
 
@@ -42,59 +38,52 @@ const ArticleCard = (props) => {
   return (
     <Col lg={4} md={6} sm={12}>
       <Card style={{ width: "auto", margin: "2rem 2rem" }}>
-        <Card.Img variant="top" src={props.article.img_url} />
+        <Card.Img variant="top" src={props.article.img_url} alt="Article image" />
         <Card.Body>
           <Card.Title>{props.article.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {t('lastarticles_author')}:{" "}
+            {t("lastarticles_author")}:{" "}
             <a
               className={classes.link}
-              href="#"
+              href="#filter"
               onClick={() => onClickAuthor(props.article.author)}
             >
               {props.article.author}
             </a>{" "}
-            / {t('lastarticles_date')}:{" "}
+            / {t("lastarticles_date")}:{" "}
             <a
               className={classes.link}
-              href="#"
+              href="#filter"
               onClick={() => onClickDate(props.article.date)}
             >
               {props.article.date}
             </a>{" "}
-            / {t('lastarticles_group')}:{" "}
+            / {t("lastarticles_group")}:{" "}
             <a
               className={classes.link}
-              href="#"
+              href="#filter"
               onClick={() => onClickGroup(props.article.group)}
             >
               {props.article.group}
             </a>
           </Card.Subtitle>
           <Card.Text>{getTwenty(props.article.content)}</Card.Text>
-          <Button variant="primary" onClick={props.handleShow}>
-            {t('articlecard_open')}
+          <Button variant="primary">
+            <Link
+              className={classes.link_nodec}
+              to={`/read-last-articles/${props.article.id}`}
+            >
+              {t("articlecard_open")}
+            </Link>
           </Button>
           {props.article.language !== "Español" || (
-            <Image
-              src={spain_flag_path}
-              roundedCircle
-              className={classes.flag}
-            />
+            <span className={`flag-icon flag-icon-es ${classes.flag}`}></span>
           )}
           {props.article.language !== "English" || (
-            <Image
-              src={uk_flag_path}
-              roundedCircle
-              className={classes.flag}
-            />
+            <span className={`flag-icon flag-icon-gb ${classes.flag}`}></span>
           )}
           {props.article.language !== "Français" || (
-            <Image
-              src={france_flag_path}
-              roundedCircle
-              className={classes.flag}
-            />
+            <span className={`flag-icon flag-icon-fr ${classes.flag}`}></span>
           )}
         </Card.Body>
       </Card>

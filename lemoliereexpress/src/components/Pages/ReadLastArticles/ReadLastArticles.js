@@ -4,12 +4,14 @@ import Row from "react-bootstrap/Row";
 import ArticleDetail from "../../Articles/ArticleDetail";
 import ArticleCard from "../../Articles/ArticleCard";
 
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ArticleFilter from "../../Articles/ArticleFilter";
 
-import classes from './ReadLastArticles.module.css';
+import classes from "./ReadLastArticles.module.css";
 
 import { useTranslation } from "react-i18next";
+
+import { Route } from "react-router-dom";
 
 const test_articles = [
   {
@@ -91,36 +93,12 @@ const test_articles = [
   },
 ];
 
-const test_article = {
-  id: 1,
-  title: "Test",
-  date: "2021-07-27",
-  img_url:
-    "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-  content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  validated: false,
-  group: "Science et technologie",
-  language: "English",
-  author: 4,
-};
-
-const ReadLastArticles = props => {
+const ReadLastArticles = (props) => {
   const { t } = useTranslation();
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = (id) => {
-    console.log(id);
-    //setDetailedArticle() to fetched article from `/articles/article-detail/${id}`
-    setShow(true);
-  };
-
   const [articleList, setArticleList] = useState(test_articles);
-  const [detailedArticle, setDetailedArticle] = useState();
 
-  const [actualFilter, setActualFilter] = useState(t('lastarticles_title'));
+  const [actualFilter, setActualFilter] = useState(t("lastarticles_title"));
 
   const [typedSearch, setTypedSearch] = useState("");
 
@@ -179,7 +157,7 @@ const ReadLastArticles = props => {
   };
 
   useEffect(() => {
-    if(articleList.length === 0){
+    if (articleList.length === 0) {
       props.setFooterFixed(true);
     } else {
       props.setFooterFixed(false);
@@ -201,7 +179,7 @@ const ReadLastArticles = props => {
             articleList.map((article) => (
               <ArticleCard
                 key={article.id}
-                handleShow={() => handleShow(article.id)}
+                // handleShow={() => handleShow(article.id)}
                 article={article}
                 setTypedSearch={setTypedSearch}
                 setActualFilter={setActualFilter}
@@ -209,21 +187,20 @@ const ReadLastArticles = props => {
             ))}
           {articleList.length !== 0 || (
             <Container className={classes.not_found__container}>
-              <h2 className={classes.not_found__h2}>{t('lastarticle_notfound')}</h2>
+              <h2 className={classes.not_found__h2}>
+                {t("lastarticle_notfound")}
+              </h2>
             </Container>
           )}
         </Row>
       </Container>
 
-      <ArticleDetail
-        show={show}
-        handleClose={handleClose}
-        // handleShow={handleShow}
-        // article={detailedArticle} to update fetched data with state
-        article={test_article}
-        setTypedSearch={setTypedSearch}
-        setActualFilter={setActualFilter}
-      />
+      <Route path="/read-last-articles/:articleId">
+        <ArticleDetail
+          setTypedSearch={setTypedSearch}
+          setActualFilter={setActualFilter}
+        />
+      </Route>
     </div>
   );
 };

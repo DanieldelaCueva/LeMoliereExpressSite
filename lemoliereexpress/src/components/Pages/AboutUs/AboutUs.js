@@ -37,7 +37,7 @@ const AboutUs = () => {
         culpa qui officia deserunt mollit anim id est laborum."
       />
 
-      <h3>Notre équipe</h3>
+      <h3>{t('teamtable_title')}</h3>
       <TeamTable />
     </Container>
   );

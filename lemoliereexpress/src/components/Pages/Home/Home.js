@@ -3,7 +3,7 @@ import classes from "./Home.module.css";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
 import { useMediaPredicate } from "react-media-hook";
-import react, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useTranslation } from "react-i18next";
 
