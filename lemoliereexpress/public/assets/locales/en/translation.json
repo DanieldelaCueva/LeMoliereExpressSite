@@ -34,7 +34,10 @@
   "lastarticles_search": "Search...",
 
   "articlecard_open": "Open",
-  "articledetail_close": "Close"
+  "articledetail_close": "Close",
+
+  "editions_notfound": "No editions found",
+  "editions_error": "Oops... Something went wrong"
 }
 
   

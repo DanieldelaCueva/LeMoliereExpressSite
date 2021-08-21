@@ -33,7 +33,10 @@
   "lastarticles_search": "Buscar...",
 
   "articlecard_open": "Abrir",
-  "articledetail_close": "Cerrar"
+  "articledetail_close": "Cerrar",
+
+  "editions_notfound": "Ninguna edición encontrada",
+  "editions_error": "¡Vaya! Algo salió mal"
 }
 
   
