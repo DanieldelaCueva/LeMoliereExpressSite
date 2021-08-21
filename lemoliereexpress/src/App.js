@@ -23,6 +23,9 @@ function App() {
         <CustomNavbar />,
         document.getElementById("navbar")
       )}
+      <Route path="/" exact>
+        <Home setFooterFixed={setFooterFixed} />
+      </Route>
       <Route path="/home">
         <Home setFooterFixed={setFooterFixed} />
       </Route>

@@ -32,7 +32,7 @@ const ReadEditions = () => {
         <Container className={classes.wrapper} key={idx}>
             <h1>{edition.title}</h1>
             <h4>{edition.date}</h4>
-            <iframe src={edition.url} className={classes.pdf}/>
+            <iframe src={edition.url} className={classes.pdf} title={edition.title}/>
         </Container>
       ))}
     </Container>

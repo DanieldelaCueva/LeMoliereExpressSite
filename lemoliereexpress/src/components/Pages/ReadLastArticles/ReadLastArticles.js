@@ -166,7 +166,7 @@ const ReadLastArticles = (props) => {
 
   return (
     <div>
-      <Container>
+      <Container className={classes.container}>
         <ArticleFilter
           typedSearch={typedSearch}
           onChangeTyped={setTypedSearch}
