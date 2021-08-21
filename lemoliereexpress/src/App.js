@@ -4,7 +4,7 @@ import "./App.css";
 import { useState } from "react";
 
 import ReactDOM from "react-dom";
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import CustomNavbar from "./components/UI/NavBar/CustomNavbar";
 
@@ -24,7 +24,7 @@ function App() {
         document.getElementById("navbar")
       )}
       <Route path="/" exact>
-        <Redirect to="/home"/>
+        <Home setFooterFixed={setFooterFixed} />
       </Route>
       <Route path="/home">
         <Home setFooterFixed={setFooterFixed} />
@@ -36,7 +36,7 @@ function App() {
         <ReadLastArticles setFooterFixed={setFooterFixed} />
       </Route>
       <Route path="/read-editions">
-        <ReadEditions setFooterFixed={setFooterFixed}/>
+        <ReadEditions />
       </Route>
       {ReactDOM.createPortal(
         <Footer className="footer" fixed={footerFixed} />,
