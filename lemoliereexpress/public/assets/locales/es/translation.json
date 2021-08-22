@@ -37,7 +37,10 @@
   "articledetail_close": "Cerrar",
 
   "editions_notfound": "Ninguna edición encontrada",
-  "editions_error": "¡Vaya! Algo salió mal"
+  "editions_error": "¡Vaya! Algo salió mal",
+
+  "404": "404... ¡Eso es un error!",
+  "404_notfound": "No se encontró nada en la URL requerida"
 }
 
   

@@ -8,7 +8,7 @@ import classes from "./ArticleDetail.module.css";
 
 import { useTranslation } from "react-i18next";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 
 const initial_article = {
   id: 1,
@@ -29,23 +29,25 @@ const ArticleDetail = (props) => {
   const article_id = params.articleId;
 
   const [detailedArticle, setDetailedArticle] = useState(initial_article);
+  const [error404, setError404] = useState(false);
 
   const { t } = useTranslation();
 
   const fetchDetailedArticle = (id) => {
+    setError404(false);
     fetch(
       `https://moliereexpressapi.pythonanywhere.com/articles/validated-article-detail/${id}`
     )
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {
-          throw new Error("Something went wrong");
+        } else if (response.status === 500) {
+          throw new Error("500");
         }
       })
       .then((fetchedArticle) => setDetailedArticle(fetchedArticle))
       .catch((error) => {
-        console.log(error);
+        setError404(true);
       });
   };
 
@@ -69,53 +71,57 @@ const ArticleDetail = (props) => {
   };
 
   return (
-    <Modal centered show={true} dialogClassName={classes.modal}>
-      <Modal.Header>
-        <Modal.Title>{detailedArticle.title}</Modal.Title>
-      </Modal.Header>
-      <Image src={detailedArticle.img_url} alt="Article image" />
-      <Modal.Body>
-        <h6 className={classes.attribs}>
-          {t("lastarticles_author")}:{" "}
-          <Link
-            className={classes.link}
-            onClick={() => onClickAuthor(detailedArticle.author)}
-            to="/read-last-articles"
-          >
-            {detailedArticle.author}
-          </Link>
-        </h6>
-        <h6 className={classes.attribs}>
-          {t("lastarticles_date")}:{" "}
-          <Link
-            className={classes.link}
-            onClick={() => onClickDate(detailedArticle.date)}
-            to="/read-last-articles"
-          >
-            {detailedArticle.date}
-          </Link>
-        </h6>
-        <h6 className={classes.attribs}>
-          {t("lastarticles_group")}:{" "}
-          <Link
-            className={classes.link}
-            onClick={() => onClickGroup(detailedArticle.group)}
-            to="/read-last-articles"
-          >
-            {detailedArticle.group}
-          </Link>
-        </h6>{" "}
-        <br />
-        <p>{detailedArticle.content}</p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary">
-          <Link className={classes.link_nodec} to="/read-last-articles">
-            {t("articledetail_close")}
-          </Link>
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <div>
+      {!error404 && <Modal centered show={true} dialogClassName={classes.modal}>
+        <Modal.Header>
+          <Modal.Title>{detailedArticle.title}</Modal.Title>
+        </Modal.Header>
+        <Image src={detailedArticle.img_url} alt="Article image" />
+        <Modal.Body>
+          <h6 className={classes.attribs}>
+            {t("lastarticles_author")}:{" "}
+            <Link
+              className={classes.link}
+              onClick={() => onClickAuthor(detailedArticle.author)}
+              to="/read-last-articles"
+            >
+              {detailedArticle.author}
+            </Link>
+          </h6>
+          <h6 className={classes.attribs}>
+            {t("lastarticles_date")}:{" "}
+            <Link
+              className={classes.link}
+              onClick={() => onClickDate(detailedArticle.date)}
+              to="/read-last-articles"
+            >
+              {detailedArticle.date}
+            </Link>
+          </h6>
+          <h6 className={classes.attribs}>
+            {t("lastarticles_group")}:{" "}
+            <Link
+              className={classes.link}
+              onClick={() => onClickGroup(detailedArticle.group)}
+              to="/read-last-articles"
+            >
+              {detailedArticle.group}
+            </Link>
+          </h6>{" "}
+          <br />
+          <p>{detailedArticle.content}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary">
+            <Link className={classes.link_nodec} to="/read-last-articles">
+              {t("articledetail_close")}
+            </Link>
+          </Button>
+        </Modal.Footer>
+      </Modal>}
+
+      {error404 && <Redirect to="/404"></Redirect>}
+    </div>
   );
 };
 

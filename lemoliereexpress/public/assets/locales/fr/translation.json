@@ -37,5 +37,8 @@
   "articledetail_close": "Fermer",
 
   "editions_notfound": "Aucune édition trouvée",
-  "editions_error": "Oops... Quelque chose a mal tourné"
+  "editions_error": "Oops... Quelque chose a mal tourné",
+
+  "404": "404... C'est une érreur!",
+  "404_notfound": "On n'a rien trouvé à l'adresse demandée"
 }

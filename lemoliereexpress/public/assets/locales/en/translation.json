@@ -38,7 +38,10 @@
   "articledetail_close": "Close",
 
   "editions_notfound": "No editions found",
-  "editions_error": "Oops... Something went wrong"
+  "editions_error": "Oops... Something went wrong",
+
+  "404": "404... That's an error!",
+  "404_notfound": "Nothing was found at the requested URL"
 }
 
   

@@ -36,7 +36,7 @@ const ReadLastArticles = (props) => {
         setBaseArticleList(fetchedList);
       })
       .catch((error) => {
-        setError(t('lastarticles_error'))
+        setError(t("lastarticles_error"));
       });
   };
 
@@ -62,23 +62,19 @@ const ReadLastArticles = (props) => {
     setIsLoading(false);
   }, [baseArticleList]);
 
-  // const not_mobile_screen = useMediaPredicate("(min-width: 768px)");
+  const not_mobile_screen = useMediaPredicate("(min-width: 992px)");
 
-  // useEffect(() => {
-  //   if (articleList.length < 4) {
-  //     props.setFooterFixed(not_mobile_screen);
-  //   }
-  // }, [not_mobile_screen, articleList]);
+  useEffect(() => {
+    if (articleList.length < 4) {
+      props.setFooterFixed(not_mobile_screen);
+    }
+  }, [not_mobile_screen, articleList]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (articleList.length <= 3) {
-  //       if (!props.footerFixed) {
-  //         props.setFooterFixed(not_mobile_screen);
-  //       }
-  //     }
-  //   }, 1)
-  // },[articleList]);
+  useEffect(() => {
+    if (articleList.length < 4) {
+      props.setFooterFixed(not_mobile_screen);
+    }
+  });
 
   const filterArticles = () => {
     if (
@@ -153,7 +149,8 @@ const ReadLastArticles = (props) => {
           setActualFilter={setActualFilter}
         />
         <Row>
-          {!isLoading && articleList.lenght !== 0 &&
+          {!isLoading &&
+            articleList.lenght !== 0 &&
             articleList.map((article) => (
               <ArticleCard
                 key={article.id}
