@@ -18,7 +18,7 @@ import Footer from "./components/UI/Footer/Footer";
 function App() {
   const [footerFixed, setFooterFixed] = useState(false);
   return (
-    <div style={{ minHeigth: "100%" }}>
+    <div style={{ height: 'inherit' }}>
       {ReactDOM.createPortal(
         <CustomNavbar />,
         document.getElementById("navbar")
@@ -33,7 +33,7 @@ function App() {
         <AboutUs />
       </Route>
       <Route path="/read-last-articles">
-        <ReadLastArticles setFooterFixed={setFooterFixed} />
+        <ReadLastArticles setFooterFixed={setFooterFixed} footerFixed={footerFixed} />
       </Route>
       <Route path="/read-editions">
         <ReadEditions setFooterFixed={setFooterFixed}/>

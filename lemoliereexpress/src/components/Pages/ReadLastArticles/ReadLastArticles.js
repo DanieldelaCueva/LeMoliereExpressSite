@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Spinner from "react-bootstrap/Spinner";
 
 import ArticleDetail from "../../Articles/ArticleDetail";
 import ArticleCard from "../../Articles/ArticleCard";
@@ -13,94 +14,71 @@ import { useTranslation } from "react-i18next";
 
 import { Route } from "react-router-dom";
 
-const test_articles = [
-  {
-    id: 1,
-    title: "Test",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    validated: false,
-    group: "Science et technologie",
-    language: "English",
-    author: 4,
-  },
-  {
-    id: 2,
-    title: "Another test",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    validated: false,
-    group: "Science et technologie",
-    language: "Español",
-    author: "Daniel De la Cueva, Sabina Gómez",
-  },
-  {
-    id: 3,
-    title: "Test 3",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    validated: false,
-    group: "Science et technologie",
-    language: "Français",
-    author: 4,
-  },
-  {
-    id: 4,
-    title: "Test",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content: "Hola",
-    validated: false,
-    group: "Art et culture",
-    language: "English",
-    author: 4,
-  },
-  {
-    id: 5,
-    title: "Another test",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    validated: false,
-    group: "Science et technologie",
-    language: "Français",
-    author: 4,
-  },
-  {
-    id: 6,
-    title: "Test 3",
-    date: "2021-07-27",
-    img_url:
-      "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    validated: false,
-    group: "Science et technologie",
-    language: "Español",
-    author: 4,
-  },
-];
+import { useMediaPredicate } from "react-media-hook";
 
 const ReadLastArticles = (props) => {
   const { t } = useTranslation();
 
-  const [articleList, setArticleList] = useState(test_articles);
+  const fetchInitialArticleList = () => {
+    setError(null);
+    setIsLoading(false);
+    fetch(
+      "https://moliereexpressapi.pythonanywhere.com/articles/validated-article-list/"
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((fetchedList) => {
+        setBaseArticleList(fetchedList);
+      })
+      .catch((error) => {
+        setError(t('lastarticles_error'))
+      });
+  };
+
+  const [baseArticleList, setBaseArticleList] = useState([]);
+  const [articleList, setArticleList] = useState(baseArticleList);
 
   const [actualFilter, setActualFilter] = useState(t("lastarticles_title"));
 
   const [typedSearch, setTypedSearch] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchInitialArticleList();
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setArticleList(baseArticleList);
+    }, 500);
+    setIsLoading(false);
+  }, [baseArticleList]);
+
+  // const not_mobile_screen = useMediaPredicate("(min-width: 768px)");
+
+  // useEffect(() => {
+  //   if (articleList.length < 4) {
+  //     props.setFooterFixed(not_mobile_screen);
+  //   }
+  // }, [not_mobile_screen, articleList]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (articleList.length <= 3) {
+  //       if (!props.footerFixed) {
+  //         props.setFooterFixed(not_mobile_screen);
+  //       }
+  //     }
+  //   }, 1)
+  // },[articleList]);
 
   const filterArticles = () => {
     if (
@@ -109,7 +87,7 @@ const ReadLastArticles = (props) => {
       actualFilter === "Título"
     ) {
       setArticleList(
-        test_articles.filter((article) =>
+        baseArticleList.filter((article) =>
           article.title.toString().includes(typedSearch)
         )
       );
@@ -120,14 +98,14 @@ const ReadLastArticles = (props) => {
       actualFilter === "Autor"
     ) {
       setArticleList(
-        test_articles.filter((article) =>
+        baseArticleList.filter((article) =>
           article.author.toString().includes(typedSearch)
         )
       );
     }
     if (actualFilter === "Date" || actualFilter === "Fecha") {
       setArticleList(
-        test_articles.filter((article) =>
+        baseArticleList.filter((article) =>
           article.date.toString().includes(typedSearch)
         )
       );
@@ -138,7 +116,7 @@ const ReadLastArticles = (props) => {
       actualFilter === "Sección"
     ) {
       setArticleList(
-        test_articles.filter((article) =>
+        baseArticleList.filter((article) =>
           article.group.toString().includes(typedSearch)
         )
       );
@@ -149,7 +127,7 @@ const ReadLastArticles = (props) => {
       actualFilter === "Idioma"
     ) {
       setArticleList(
-        test_articles.filter((article) =>
+        baseArticleList.filter((article) =>
           article.language.toString().includes(typedSearch)
         )
       );
@@ -175,22 +153,26 @@ const ReadLastArticles = (props) => {
           setActualFilter={setActualFilter}
         />
         <Row>
-          {articleList.lenght === 0 ||
+          {!isLoading && articleList.lenght !== 0 &&
             articleList.map((article) => (
               <ArticleCard
                 key={article.id}
-                // handleShow={() => handleShow(article.id)}
                 article={article}
                 setTypedSearch={setTypedSearch}
                 setActualFilter={setActualFilter}
               />
             ))}
-          {articleList.length !== 0 || (
+          {!isLoading && articleList.length === 0 && (
             <Container className={classes.not_found__container}>
               <h2 className={classes.not_found__h2}>
                 {t("lastarticle_notfound")}
               </h2>
             </Container>
+          )}
+          {isLoading && (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           )}
         </Row>
       </Container>

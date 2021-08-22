@@ -6,8 +6,6 @@ body {
   font-family: "Poppins", sans-serif; /*same font family than the navbar's, under test */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* min-width: 475px; */
 }
 
 code {

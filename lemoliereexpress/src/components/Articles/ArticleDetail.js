@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 import { Link, useParams } from "react-router-dom";
 
-const test_article = {
+const initial_article = {
   id: 1,
   title: "Test",
   date: "2021-07-27",
@@ -25,45 +25,94 @@ const test_article = {
 };
 
 const ArticleDetail = (props) => {
-
   const params = useParams();
   const article_id = params.articleId;
-  console.log(article_id);
-  
-  const [detailedArticle, setDetailedArticle] = useState();
+
+  const [detailedArticle, setDetailedArticle] = useState(initial_article);
 
   const { t } = useTranslation();
 
-  const onClickAuthor = author => {
+  const fetchDetailedArticle = (id) => {
+    fetch(
+      `https://moliereexpressapi.pythonanywhere.com/articles/validated-article-detail/${id}`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((fetchedArticle) => setDetailedArticle(fetchedArticle))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchDetailedArticle(article_id);
+  }, []);
+
+  const onClickAuthor = (author) => {
     props.setTypedSearch(author.toString());
     props.setActualFilter("Auteur");
   };
 
-  const onClickDate = date => {
+  const onClickDate = (date) => {
     props.setTypedSearch(date.toString());
     props.setActualFilter("Date");
   };
 
-  const onClickGroup = group => {
+  const onClickGroup = (group) => {
     props.setTypedSearch(group.toString());
     props.setActualFilter("Rubrique");
   };
 
   return (
-    <Modal centered show={true} onHide={props.handleClose} dialogClassName={classes.modal}>
+    <Modal centered show={true} dialogClassName={classes.modal}>
       <Modal.Header>
-        <Modal.Title>{test_article.title}</Modal.Title>
+        <Modal.Title>{detailedArticle.title}</Modal.Title>
       </Modal.Header>
-      <Image src={test_article.img_url} alt="Article image" />
+      <Image src={detailedArticle.img_url} alt="Article image" />
       <Modal.Body>
-        <h6 className={classes.attribs}>{t('lastarticles_author')}: <Link className={classes.link} onClick={() => onClickAuthor(test_article.author)} to="/read-last-articles">{test_article.author}</Link></h6>
-        <h6 className={classes.attribs}>{t('lastarticles_date')}: <Link className={classes.link} onClick={() => onClickDate(test_article.date)} to="/read-last-articles">{test_article.date}</Link></h6>
-        <h6 className={classes.attribs}>{t('lastarticles_group')}: <Link className={classes.link} onClick={() => onClickGroup(test_article.group)} to="/read-last-articles">{test_article.group}</Link></h6> <br />
-        <p>{test_article.content}</p>
+        <h6 className={classes.attribs}>
+          {t("lastarticles_author")}:{" "}
+          <Link
+            className={classes.link}
+            onClick={() => onClickAuthor(detailedArticle.author)}
+            to="/read-last-articles"
+          >
+            {detailedArticle.author}
+          </Link>
+        </h6>
+        <h6 className={classes.attribs}>
+          {t("lastarticles_date")}:{" "}
+          <Link
+            className={classes.link}
+            onClick={() => onClickDate(detailedArticle.date)}
+            to="/read-last-articles"
+          >
+            {detailedArticle.date}
+          </Link>
+        </h6>
+        <h6 className={classes.attribs}>
+          {t("lastarticles_group")}:{" "}
+          <Link
+            className={classes.link}
+            onClick={() => onClickGroup(detailedArticle.group)}
+            to="/read-last-articles"
+          >
+            {detailedArticle.group}
+          </Link>
+        </h6>{" "}
+        <br />
+        <p>{detailedArticle.content}</p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary">
-          <Link className={classes.link_nodec} to="/read-last-articles">{t('articledetail_close')}</Link>
+          <Link className={classes.link_nodec} to="/read-last-articles">
+            {t("articledetail_close")}
+          </Link>
         </Button>
       </Modal.Footer>
     </Modal>
