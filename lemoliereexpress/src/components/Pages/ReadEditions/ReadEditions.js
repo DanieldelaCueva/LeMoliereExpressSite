@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 
 import { useTranslation } from "react-i18next";
 
+import { Helmet } from "react-helmet";
+
 const ReadEditions = props => {
   const { t } = useTranslation();
 
@@ -86,6 +88,13 @@ const ReadEditions = props => {
 
   return (
     <Container className={classes.container}>
+      <Helmet>
+        <title>Le Molière Express | Read Editions</title>
+        <meta
+          name="description"
+          content="Page where you can read the published editions of Le Molière Express"
+        />
+      </Helmet>
       {content}
     </Container>
   );

@@ -7,11 +7,21 @@ import classes from "./AboutUs.module.css";
 
 import { useTranslation } from "react-i18next";
 
+import { Helmet } from "react-helmet";
+
 const AboutUs = () => {
   const { t } = useTranslation();
 
   return (
     <Container className={classes.container}>
+      <Helmet>
+        <title>Le Molière Express | About Us</title>
+        <meta
+          name="description"
+          content="About us page"
+        />
+      </Helmet>
+
       <h1>{t('aboutus_title')}</h1>
 
       <p className={classes.descrpition}>

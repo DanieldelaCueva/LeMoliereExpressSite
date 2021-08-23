@@ -10,11 +10,12 @@ import CustomNavbar from "./components/UI/NavBar/CustomNavbar";
 
 import Footer from "./components/UI/Footer/Footer";
 
-const Home = React.lazy(() => import("./components/Pages/Home/Home"));
-const ReadLastArticles = React.lazy(() => import("./components/Pages/ReadLastArticles/ReadLastArticles"));
-const ReadEditions = React.lazy(() => import("./components/Pages/ReadEditions/ReadEditions"));
-const AboutUs = React.lazy(() => import("./components/Pages/AboutUs/AboutUs"));
-const NotFound404 = React.lazy(() => import("./components/Pages/NotFound404/NotFound404"));
+import Home from "./components/Pages/Home/Home";
+import ReadLastArticles from "./components/Pages/ReadLastArticles/ReadLastArticles";
+import ReadEditions from "./components/Pages/ReadEditions/ReadEditions";
+import AboutUs from "./components/Pages/AboutUs/AboutUs";
+import NotFound404 from "./components/Pages/NotFound404/NotFound404";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [footerFixed, setFooterFixed] = useState(false);
@@ -24,6 +25,10 @@ function App() {
         <CustomNavbar />,
         document.getElementById("navbar")
       )}
+      <Helmet>
+        <title>Le Molière Express</title>
+        <meta name="description" content="Le Molière Express's website" />
+      </Helmet>
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home" />

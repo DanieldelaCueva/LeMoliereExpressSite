@@ -16,6 +16,8 @@ import { Route } from "react-router-dom";
 
 import { useMediaPredicate } from "react-media-hook";
 
+import { Helmet } from "react-helmet";
+
 const ReadLastArticles = (props) => {
   const { t } = useTranslation();
 
@@ -141,6 +143,13 @@ const ReadLastArticles = (props) => {
   return (
     <div>
       <Container className={classes.container}>
+      <Helmet>
+        <title>Le Molière Express | Read Last Articles</title>
+        <meta
+          name="description"
+          content="Page where you can read our very last articles"
+        />
+      </Helmet>
         <ArticleFilter
           typedSearch={typedSearch}
           onChangeTyped={setTypedSearch}

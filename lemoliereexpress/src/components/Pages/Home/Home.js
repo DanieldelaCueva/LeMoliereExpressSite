@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 
 import { useTranslation } from "react-i18next";
 
+import { Helmet } from "react-helmet";
+
 const Home = props => {
 
   const { t } = useTranslation();
@@ -19,6 +21,11 @@ const Home = props => {
   
   return (
     <Container className={classes.container}>
+      <Helmet>
+        <title>Le Molière Express | Home</title>
+        <meta name="description" content="Home page of Le Molière Express's site" />
+      </Helmet>
+
       <h1>{t('home_welcome')}</h1>
 
       <Carousel variant="dark" className={classes.carousel} nextLabel="" prevLabel="">
