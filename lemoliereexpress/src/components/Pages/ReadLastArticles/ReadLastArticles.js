@@ -35,7 +35,7 @@ const ReadLastArticles = (props) => {
         }
       })
       .then((fetchedList) => {
-        setBaseArticleList(fetchedList);
+        setBaseArticleList(fetchedList.reverse());
       })
       .catch((error) => {
         setError(t("lastarticles_error"));
