@@ -10,25 +10,11 @@ import { useTranslation } from "react-i18next";
 
 import { Link, Redirect, useParams } from "react-router-dom";
 
-const initial_article = {
-  id: 1,
-  title: "Test",
-  date: "2021-07-27",
-  img_url:
-    "https://www.azulschool.net/wp-content/uploads/2021/04/Creacion-y-consumo-de-APIs-con-Django-REST-Framework.png",
-  content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  validated: false,
-  group: "Science et technologie",
-  language: "English",
-  author: 4,
-};
-
 const ArticleDetail = (props) => {
   const params = useParams();
   const article_id = params.articleId;
 
-  const [detailedArticle, setDetailedArticle] = useState(initial_article);
+  const [detailedArticle, setDetailedArticle] = useState([]);
   const [error404, setError404] = useState(false);
 
   const { t } = useTranslation();
