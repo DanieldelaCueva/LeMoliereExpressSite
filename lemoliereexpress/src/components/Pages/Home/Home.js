@@ -13,7 +13,7 @@ const Home = props => {
 
   const { t } = useTranslation();
 
-  const mobile_portrait = useMediaPredicate("(max-width: 768px) and (orientation: portrait)");
+  const mobile_portrait = useMediaPredicate("(max-width: 992px) and (orientation: portrait)");
 
   useEffect(() => {
     props.setFooterFixed(mobile_portrait);
@@ -28,38 +28,16 @@ const Home = props => {
 
       <h1>{t('home_welcome')}</h1>
 
-      <Carousel variant="dark" className={classes.carousel} nextLabel="" prevLabel="">
+      <Carousel className={classes.carousel} nextLabel="" prevLabel="" pause="hover">
         <Carousel.Item interval={4500}>
           <img
             className="d-block w-100"
-            src="https://i.pinimg.com/originals/5b/be/51/5bbe514dd733c24cf53b26dcc5b61d30.jpg"
+            src={process.env.PUBLIC_URL + "/assets/images/institut_francais.jpg"}
             alt="First slide"
           />
           <Carousel.Caption>
             <h3>Le Molière Express</h3>
             <p>Par les élèves. Pour les élèves</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={4500}>
-          <img
-            className="d-block w-100"
-            src="https://i.pinimg.com/originals/5b/be/51/5bbe514dd733c24cf53b26dcc5b61d30.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>Le Molière Express</h3>
-            <p>{t('home_interview')}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={4500}>
-          <img
-            className="d-block w-100"
-            src="https://i.pinimg.com/originals/5b/be/51/5bbe514dd733c24cf53b26dcc5b61d30.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>Le Molière Express</h3>
-            <p>{t('home_visite')}</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
