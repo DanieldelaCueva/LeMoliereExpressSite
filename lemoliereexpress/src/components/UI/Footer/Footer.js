@@ -17,7 +17,7 @@ const Footer = (props) => {
             </div>
 
             <div className={classes.social_div}>
-              <a href="#">
+              <a href="https://www.instagram.com/moliere_express/" target="_blank">
                 <svg
                   className={classes.image}
                   xmlns="http://www.w3.org/2000/svg"
