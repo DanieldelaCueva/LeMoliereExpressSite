@@ -10,7 +10,7 @@ import { useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const CustomNavbar = () => {
   const [navExpanded, setNavExpanded] = useState(false);
@@ -20,7 +20,7 @@ const CustomNavbar = () => {
   return (
     <Navbar sticky="top" bg="light" variant="light" expand="xl" className={classes.navbar} expanded={navExpanded}>
       <Container>
-        <Navbar.Brand style={{fontSize: "2rem"}}>Le Molière Express</Navbar.Brand>
+        <Navbar.Brand style={{fontSize: "2rem"}}><NavLink to="/home" className={classes.title}>Le Molière Express</NavLink></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => navExpanded ? setNavExpanded(false) : setNavExpanded(true)}/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

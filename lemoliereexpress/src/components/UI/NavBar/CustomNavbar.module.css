@@ -13,6 +13,15 @@
     color: inherit;
 }
 
+.title{
+    text-decoration: none;
+    color: inherit;
+}
+
+.title:hover{
+    color: inherit;
+}
+
 .link:hover,
 .link:active,
 .active{
