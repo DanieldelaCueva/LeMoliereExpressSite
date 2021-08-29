@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 
 import { Helmet } from "react-helmet";
 
+import { Link } from "react-router-dom"
+
 const Home = props => {
 
   const { t } = useTranslation();
@@ -34,7 +36,7 @@ const Home = props => {
             className="d-block w-100"
             src={process.env.PUBLIC_URL + "/assets/images/institut_francais.jpg"}
             alt="First slide"
-          />
+          ><Link path="/read-last-articles/333df9a4-2194-4e40-ab6b-40cb02c52ceb"/></img>
           <Carousel.Caption>
             <h3>Le Molière Express</h3>
             <p>Par les élèves. Pour les élèves</p>
