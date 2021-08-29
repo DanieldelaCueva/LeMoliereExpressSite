@@ -3,15 +3,17 @@ import classes from "./Home.module.css";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
 import { useMediaPredicate } from "react-media-hook";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslation } from "react-i18next";
 
 import { Helmet } from "react-helmet";
 
-import { Link } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 const Home = props => {
+
+  const [redirect, setRedirect] = useState()
 
   const { t } = useTranslation();
 
@@ -36,13 +38,15 @@ const Home = props => {
             className="d-block w-100"
             src={process.env.PUBLIC_URL + "/assets/images/institut_francais.jpg"}
             alt="First slide"
-          ><Link path="/read-last-articles/333df9a4-2194-4e40-ab6b-40cb02c52ceb"/></img>
+            onClick={() => setRedirect("/read-last-articles/333df9a4-2194-4e40-ab6b-40cb02c52ceb")}
+          />
           <Carousel.Caption>
             <h3>Le Molière Express</h3>
             <p>Par les élèves. Pour les élèves</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      {redirect && <Redirect to={redirect}/>}
     </Container>
   );
 };
