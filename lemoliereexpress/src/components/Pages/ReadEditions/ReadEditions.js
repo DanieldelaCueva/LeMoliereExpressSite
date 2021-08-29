@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 import { Helmet } from "react-helmet";
 
-const ReadEditions = props => {
+const ReadEditions = (props) => {
   const { t } = useTranslation();
 
   const [editions, setEditions] = useState([]);
@@ -28,7 +28,7 @@ const ReadEditions = props => {
         }
       })
       .then((fetchedResults) => {
-        setEditions(fetchedResults);
+        setEditions(fetchedResults.reverse());
         setIsloading(false);
       })
       .catch((error) => {
@@ -37,18 +37,18 @@ const ReadEditions = props => {
   };
 
   useEffect(() => {
-    fetchEditions()
-  },[]);
+    fetchEditions();
+  }, []);
 
   useEffect(() => {
     if (editions.length < 2) {
-      props.setFooterFixed(true)
-      console.log(true)
+      props.setFooterFixed(true);
+      console.log(true);
     } else {
-      props.setFooterFixed(false)
-      console.log(false)
+      props.setFooterFixed(false);
+      console.log(false);
     }
-  }, [editions])
+  }, [editions]);
 
   let content = "";
   if (editions.length > 0) {
@@ -60,6 +60,9 @@ const ReadEditions = props => {
           src={edition.url}
           className={classes.pdf}
           title={edition.title}
+          width="640"
+          height="480"
+          allow="autoplay"
         />
       </Container>
     ));
