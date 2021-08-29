@@ -1,7 +1,7 @@
-/* .modal{
-    width: 70%;
-    max-width: 70%;
-} */
+.modal{
+    width: 50%;
+    max-width: 50%;
+}
 
 .attribs{
     color: rgb(83, 83, 83);
@@ -12,4 +12,17 @@
 .link_nodec:hover{
     text-decoration: none;
     color: inherit;
+}
+
+.textarea{
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none;
+    width: 100%;
 }

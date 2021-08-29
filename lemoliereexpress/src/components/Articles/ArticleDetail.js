@@ -62,7 +62,7 @@ const ArticleDetail = (props) => {
         <Modal.Header>
           <Modal.Title>{detailedArticle.title}</Modal.Title>
         </Modal.Header>
-        <Image src={detailedArticle.img_url} alt="Article image" />
+        <Image src={detailedArticle.img_url} alt="Article image" style={{maxHeight: "1000px"}}/>
         <Modal.Body>
           <h6 className={classes.attribs}>
             {t("lastarticles_author")}:{" "}
@@ -95,7 +95,7 @@ const ArticleDetail = (props) => {
             </Link>
           </h6>{" "}
           <br />
-          <p>{detailedArticle.content}</p>
+          <textarea readOnly rows={20} className={classes.textarea} value={detailedArticle.content}></textarea>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary">
