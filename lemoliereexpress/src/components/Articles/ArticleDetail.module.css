@@ -24,5 +24,13 @@
     box-shadow: none;
 
     resize: none;
+    height: auto;
+    max-height: 20rem;
     width: 100%;
+}
+
+.image{
+    max-width: 720px;
+    margin: auto;
+    display: block;
 }
