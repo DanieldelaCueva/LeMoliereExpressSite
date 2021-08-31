@@ -73,7 +73,7 @@ const TeamTable = () => {
         </tbody>
       </Table>
 
-      <Container>
+      {/* <Container>
         <Row>
           <Col xl={6} sm={12}>
             <h4>Art et culture</h4>
@@ -155,7 +155,7 @@ const TeamTable = () => {
             </Table>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 };
