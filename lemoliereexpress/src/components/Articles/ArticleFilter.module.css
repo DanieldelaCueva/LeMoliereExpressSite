@@ -25,6 +25,9 @@
     height: 3rem;
     font-size: inherit;
     padding: 1rem;
+    background-color: whitesmoke;
+    border-color: black;
+    color: red;
 }
 
 .searchBar:active{

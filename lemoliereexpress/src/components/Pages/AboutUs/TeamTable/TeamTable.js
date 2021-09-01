@@ -42,7 +42,7 @@ const TeamTable = () => {
           </tr>
           <tr>
             <td>Cloe Callejero</td>
-            <td>???</td>
+            <td>Community manager</td>
             <td>
               <a href="mailto:cloe.callejero@molierezaragoza.org">
                 cloe.callejero@molierezaragoza.org
@@ -52,7 +52,7 @@ const TeamTable = () => {
           </tr>
           <tr>
             <td>Daniel De la Cueva</td>
-            <td>???</td>
+            <td>Responsable technique</td>
             <td>
               <a href="mailto:daniel.delacueva@molierezaragoza.org">
                 daniel.delacueva@molierezaragoza.org
@@ -62,13 +62,13 @@ const TeamTable = () => {
           </tr>
           <tr>
             <td>Zoe Hinojo</td>
-            <td>???</td>
+            <td>Lien CVL</td>
             <td>
               <a href="mailto:zoe.hinojo@molierezaragoza.org">
                 zoe.hinojo@molierezaragoza.org
               </a>
             </td>
-            <td>1ère</td>
+            <td>Tale</td>
           </tr>
         </tbody>
       </Table>

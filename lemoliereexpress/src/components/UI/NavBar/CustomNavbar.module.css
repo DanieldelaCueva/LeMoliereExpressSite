@@ -16,6 +16,7 @@
 .title{
     text-decoration: none;
     color: inherit;
+    font-family: 'DM Serif Display', serif;
 }
 
 .title:hover{

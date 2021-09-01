@@ -72,12 +72,6 @@ const ReadLastArticles = (props) => {
     }
   }, [not_mobile_screen, articleList]);
 
-  useEffect(() => {
-    if (articleList.length < 4) {
-      props.setFooterFixed(not_mobile_screen);
-    }
-  });
-
   const filterArticles = () => {
     if (
       actualFilter === "Titre" ||

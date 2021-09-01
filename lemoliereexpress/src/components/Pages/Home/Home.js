@@ -30,7 +30,7 @@ const Home = props => {
         <meta name="description" content="Home page of Le Molière Express's site" />
       </Helmet>
 
-      <h1>{t('home_welcome')}</h1>
+      <h1 style={{fontFamily: "'Open Sans', sans-serif"}}>{t('home_welcome')}</h1>
 
       <Carousel className={classes.carousel} nextLabel="" prevLabel="" pause="hover">
         <Carousel.Item interval={4500}>
@@ -41,7 +41,7 @@ const Home = props => {
             onClick={() => setRedirect("/read-last-articles/333df9a4-2194-4e40-ab6b-40cb02c52ceb")}
           />
           <Carousel.Caption>
-            <h3>Le Molière Express</h3>
+            <h3 style={{fontFamily: "'DM Serif Display', serif"}}>Le Molière Express</h3>
             <p>Par les élèves. Pour les élèves</p>
           </Carousel.Caption>
         </Carousel.Item>

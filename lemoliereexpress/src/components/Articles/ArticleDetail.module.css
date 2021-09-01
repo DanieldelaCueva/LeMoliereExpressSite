@@ -1,6 +1,8 @@
-.modal{
-    width: 50%;
-    max-width: 50%;
+@media (min-width: 992px) {
+    .modal{
+        width: 50%;
+        max-width: 50%;
+    }
 }
 
 .attribs{
