@@ -9,7 +9,7 @@ const Quote = (props) => {
       <div className={classes.img_div}>
         <Image
           className={classes.quote_img}
-          rounded
+          roundedCircle
           src={props.authorImageUrl}
         />
         <div>

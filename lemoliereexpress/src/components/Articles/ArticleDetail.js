@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 
 import { Link, Redirect, useParams } from "react-router-dom";
 
+import { Helmet } from "react-helmet";
+
 const ArticleDetail = (props) => {
   const params = useParams();
   const article_id = params.articleId;
@@ -58,6 +60,13 @@ const ArticleDetail = (props) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{`${detailedArticle.title} | LME`}</title>
+        <meta
+          name="description"
+          content={`Article ${detailedArticle.title}`}
+        />
+      </Helmet>
       {!error404 && <Modal centered show={true} dialogClassName={classes.modal}>
         <Modal.Header>
           <Modal.Title>{detailedArticle.title}</Modal.Title>
