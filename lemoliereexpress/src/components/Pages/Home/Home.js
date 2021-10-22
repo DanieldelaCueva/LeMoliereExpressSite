@@ -37,12 +37,24 @@ const Home = props => {
           <img
             className="d-block w-100"
             src={process.env.PUBLIC_URL + "/assets/images/institut_francais.jpg"}
-            alt="First slide"
+            alt="Interview à l'institut français"
             onClick={() => setRedirect("/read-last-articles/333df9a4-2194-4e40-ab6b-40cb02c52ceb")}
           />
           <Carousel.Caption>
             <h3 style={{fontFamily: "'DM Serif Display', serif"}}>Le Molière Express</h3>
             <p>Par les élèves. Pour les élèves</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item interval={4500} onClick={() => window.open('https://drive.google.com/file/d/1hNfqCustmtOitfoQNlqPDjSw0fu31gy6/view?usp=sharing')}>
+          <img
+            className="d-block w-100"
+            src={process.env.PUBLIC_URL + "/assets/images/COMPTE_RENDU.jpg"}
+            alt="Compte Rendu"
+          />
+          <Carousel.Caption>
+            <h3 style={{fontFamily: "'DM Serif Display', serif", color: 'black'}}>Le Molière Express</h3>
+            <p style={{fontFamily: "'DM Serif Display', serif", color: 'black'}}>Par les élèves. Pour les élèves</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

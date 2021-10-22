@@ -6,3 +6,7 @@
 .carousel{
     padding-top: 1rem;
 }
+
+.carousel:hover{
+    cursor: pointer;
+}
