@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { ThemeContextProvider } from "./store/theme-context";
+
 import { BrowserRouter } from "react-router-dom";
 
 import "./i18nextConf";
@@ -18,11 +20,13 @@ const loading_markup = (
 
 ReactDOM.render(
   <Suspense fallback={loading_markup}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <ThemeContextProvider>
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>
+    </ThemeContextProvider>
   </Suspense>,
   document.getElementById("root")
 );
