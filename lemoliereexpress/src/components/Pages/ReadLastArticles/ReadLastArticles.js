@@ -20,13 +20,34 @@ import { Helmet } from "react-helmet";
 
 const ReadLastArticles = (props) => {
   const { t } = useTranslation();
+  const [winFactor, setWinFactor] = useState(0);
 
-  const fetchInitialArticleList = () => {
+  const loadOnScroll = () => {
+    let scrollTop = document.documentElement.scrollTop;
+    let windowHeight = window.innerHeight;
+
+    setWinFactor(Math.round(scrollTop / (windowHeight-300)));
+  };
+
+  window.addEventListener("scroll", loadOnScroll);
+
+  useEffect(() => {
+    if (9 + winFactor * 3 > articlesLoaded){
+      setArticlesLoaded(9 + winFactor * 3);
+      fetchArticleList();
+    }
+  }, [winFactor]);
+
+  const addToBaseArticleList = (addToList) => {
+    let prevList = baseArticleList
+    prevList.push(...addToList)
+    setBaseArticleList(prevList);
+  }
+
+  const fetchArticleList = () => {
     setError(null);
     setIsLoading(false);
-    fetch(
-      "https://moliereexpressapi.pythonanywhere.com/articles/validated-article-list/"
-    )
+    fetch(`https://moliereexpressapi.pythonanywhere.com/articles/validated-last-articles/${articlesLoaded}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -35,7 +56,12 @@ const ReadLastArticles = (props) => {
         }
       })
       .then((fetchedList) => {
-        setBaseArticleList(fetchedList.reverse());
+        let newList = [];
+        for (let i = prevArticlesLoaded; i<fetchedList.length; i++) {
+          newList.push(fetchedList[i])
+        }
+        addToBaseArticleList(newList);
+        setPrevArticlesLoaded(articlesLoaded);
       })
       .catch((error) => {
         setError(t("lastarticles_error"));
@@ -52,8 +78,12 @@ const ReadLastArticles = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [articlesLoaded, setArticlesLoaded] = useState(9); // number of articles requested and loaded in screen (depends on scroll)
+  const [prevArticlesLoaded, setPrevArticlesLoaded] = useState(0);
+
   useEffect(() => {
-    fetchInitialArticleList();
+    fetchArticleList();
+    props.setFooterFixed(false);
   }, []);
 
   useEffect(() => {
@@ -64,13 +94,6 @@ const ReadLastArticles = (props) => {
     setIsLoading(false);
   }, [baseArticleList]);
 
-  const not_mobile_screen = useMediaPredicate("(min-width: 992px)");
-
-  useEffect(() => {
-    if (articleList.length < 4) {
-      props.setFooterFixed(not_mobile_screen);
-    }
-  }, [not_mobile_screen, articleList]);
 
   const filterArticles = () => {
     if (
@@ -137,13 +160,13 @@ const ReadLastArticles = (props) => {
   return (
     <div>
       <Container className={classes.container}>
-      <Helmet>
-        <title>Le Molière Express | Read Last Articles</title>
-        <meta
-          name="description"
-          content="Page where you can read our very last articles"
-        />
-      </Helmet>
+        <Helmet>
+          <title>Le Molière Express | Read Last Articles</title>
+          <meta
+            name="description"
+            content="Page where you can read our very last articles"
+          />
+        </Helmet>
         <ArticleFilter
           typedSearch={typedSearch}
           onChangeTyped={setTypedSearch}
