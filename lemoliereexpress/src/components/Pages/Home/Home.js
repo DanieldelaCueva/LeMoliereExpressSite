@@ -46,17 +46,46 @@ const Home = props => {
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item interval={4500} onClick={() => window.open('https://drive.google.com/file/d/1hNfqCustmtOitfoQNlqPDjSw0fu31gy6/view?usp=sharing')}>
+        <Carousel.Item interval={4500}>
           <img
             className="d-block w-100"
-            src={process.env.PUBLIC_URL + "/assets/images/COMPTE_RENDU.jpg"}
-            alt="Compte Rendu"
+            src={process.env.PUBLIC_URL + "/assets/images/concours_unes.png"}
+            alt="Concours des unes"
+            onClick={() => window.open('https://www.instagram.com/p/CcVL90mM8Eo/')}
           />
           <Carousel.Caption>
-            <h3 style={{fontFamily: "'DM Serif Display', serif", color: 'black'}}>Le Molière Express</h3>
-            <p style={{fontFamily: "'DM Serif Display', serif", color: 'black'}}>Par les élèves. Pour les élèves</p>
+            <h3 style={{fontFamily: "'DM Serif Display', serif"}}>Le Molière Express</h3>
+            <p>Par les élèves. Pour les élèves</p>
           </Carousel.Caption>
         </Carousel.Item>
+
+        <Carousel.Item interval={4500}>
+          <img
+            className="d-block w-100"
+            src={process.env.PUBLIC_URL + "/assets/images/fernando_ledesma.jpg"}
+            alt="Interview à Fernando Ledesma Gelas"
+            onClick={() => setRedirect("/read-last-articles/ab0befa5-91f4-4a10-a8c3-26c0b4fe4146")}
+          />
+          <Carousel.Caption>
+            <h3 style={{fontFamily: "'DM Serif Display', serif"}}>Le Molière Express</h3>
+            <p>Par les élèves. Pour les élèves</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item interval={4500}>
+          <img
+            className="d-block w-100"
+            src={process.env.PUBLIC_URL + "/assets/images/about_us.png"}
+            alt="About us"
+            onClick={() => setRedirect("/about-us")}
+          />
+          <Carousel.Caption>
+            <h3 style={{fontFamily: "'DM Serif Display', serif"}}>Le Molière Express</h3>
+            <p>Par les élèves. Pour les élèves</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        
       </Carousel>
       {redirect && <Redirect to={redirect}/>}
     </Container>

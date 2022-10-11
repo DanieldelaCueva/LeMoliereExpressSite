@@ -41,7 +41,7 @@ const ArticleDetail = (props) => {
 
   useEffect(() => {
     fetchDetailedArticle(article_id);
-  }, []);
+  });
 
   const onClickAuthor = (author) => {
     props.setTypedSearch(author.toString());
