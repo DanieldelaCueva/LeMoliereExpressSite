@@ -29,7 +29,7 @@ const AboutUs = () => {
         authorName="Sabina Gómez"
         authorIs={t("quote_rec")}
         authorImageUrl="https://drive.google.com/uc?export=view&id=1MJG4-wTFT6GQGiuillI7zThKUYaDtNBz"
-        quoteContent="Nous entendons souvent dire que
+        quoteContent='Nous entendons souvent dire que
         les adolescents vivent dans une bulle,
         que nous sommes passifs ou peu
         impliqués. Cependant, voici la preuve
@@ -40,7 +40,7 @@ const AboutUs = () => {
         projet collectif que nous, élèves du
         Molière, avons créé et gérons en
         autonomie et dont nous nous devons
-        sentir extrêmement fiers."
+        sentir extrêmement fiers.'
       />
 
       <h3 className={classes.h3}>{t("teamtable_title")}</h3>

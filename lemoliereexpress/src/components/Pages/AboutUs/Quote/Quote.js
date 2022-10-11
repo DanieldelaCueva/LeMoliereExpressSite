@@ -19,7 +19,7 @@ const Quote = (props) => {
       </div>
       <div className={classes.quote_div}>
         <p>
-          <i className={classes.quote}>" {props.quoteContent} "</i>
+          <i className={classes.quote}>' {props.quoteContent} '</i>
         </p>
       </div>
     </Container>
