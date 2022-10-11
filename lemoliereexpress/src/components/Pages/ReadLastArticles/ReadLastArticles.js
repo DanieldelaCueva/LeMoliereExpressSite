@@ -83,7 +83,6 @@ const ReadLastArticles = (props) => {
 
   useEffect(() => {
     fetchArticleList();
-    props.setFooterFixed(false);
   }, []);
 
   useEffect(() => {
@@ -93,6 +92,14 @@ const ReadLastArticles = (props) => {
     }, 500);
     setIsLoading(false);
   }, [baseArticleList]);
+
+  useEffect(() => {
+    if (articleList.length === 0) {
+      props.setFooterFixed(true);
+    } else {
+      props.setFooterFixed(false);
+    }
+  }, [articleList]);
 
 
   const filterArticles = () => {
@@ -148,14 +155,6 @@ const ReadLastArticles = (props) => {
       );
     }
   };
-
-  useEffect(() => {
-    if (articleList.length === 0) {
-      props.setFooterFixed(true);
-    } else {
-      props.setFooterFixed(false);
-    }
-  }, [articleList]);
 
   return (
     <div>
