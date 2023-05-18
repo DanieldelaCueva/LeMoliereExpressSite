@@ -28,7 +28,7 @@ const AboutUs = () => {
       <Quote
         authorName="Sabina Gómez"
         authorIs={t("quote_rec")}
-        authorImageUrl="https://drive.google.com/uc?export=view&id=1MJG4-wTFT6GQGiuillI7zThKUYaDtNBz"
+        authorImageUrl="https://drive.google.com/uc?export=view&id=11yxCBjJuwg9uQ-kigtnx954h1Xdb6pnu"
         quoteContent='Nous entendons souvent dire que
         les adolescents vivent dans une bulle,
         que nous sommes passifs ou peu

@@ -50,21 +50,11 @@ const TeamTable = () => {
             <td>Terminale</td>
           </tr>
           <tr>
-            <td>Leyre Lallana</td>
+            <td>Samuel Enrich</td>
             <td>Aide Direction</td>
             <td>
-              <a href="mailto:leyre.lallana@molierezaragoza.org">
-                leyre.lallana@molierezaragoza.org
-              </a>
-            </td>
-            <td>2nde</td>
-          </tr>
-          <tr>
-            <td>Paula Pellejero</td>
-            <td>Aide Direction</td>
-            <td>
-              <a href="mailto:paula.pellejero@molierezaragoza.org">
-                paula.pellejero@molierezaragoza.org
+              <a href="mailto:samuel.enrich@molierezaragoza.org">
+                samuel.enrich@molierezaragoza.org
               </a>
             </td>
             <td>2nde</td>
