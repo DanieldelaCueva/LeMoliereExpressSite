@@ -30,44 +30,34 @@ const TeamTable = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Sabina Gómez</td>
-            <td>{t('quote_rec')}</td>
-            <td>
-              <a href="mailto:sabina.gomez@molierezaragoza.org">
-                sabina.gomez@molierezaragoza.org
-              </a>
-            </td>
-            <td>Terminale</td>
-          </tr>
-          <tr>
-            <td>Ariadna Valero</td>
-            <td>Aide Direction</td>
-            <td>
-              <a href="mailto:ariadna.valero@molierezaragoza.org">
-                ariadna.valero@molierezaragoza.org
-              </a>
-            </td>
-            <td>Terminale</td>
-          </tr>
-          <tr>
             <td>Samuel Enrich</td>
-            <td>Aide Direction</td>
+            <td>Redacteur en chef</td>
             <td>
               <a href="mailto:samuel.enrich@molierezaragoza.org">
                 samuel.enrich@molierezaragoza.org
               </a>
             </td>
-            <td>2nde</td>
+            <td>1ère</td>
           </tr>
           <tr>
-            <td>Daniel De la Cueva</td>
-            <td>Responsable technique</td>
+            <td>Sofía Beguería</td>
+            <td>Aide Direction</td>
             <td>
-              <a href="mailto:daniel.delacueva@molierezaragoza.org">
-                daniel.delacueva@molierezaragoza.org
+              <a href="mailto:sofia.begueria@molierezaragoza.org">
+                sofia.begueria@molierezaragoza.org
               </a>
             </td>
-            <td>Terminale</td>
+            <td>3ème</td>
+          </tr>
+          <tr>
+            <td>Alejandro López</td>
+            <td>Responsable technique</td>
+            <td>
+              <a href="mailto:alejandro.lopezsebastian@molierezaragoza.org">
+                alejandro.lopezsebastian@molierezaragoza.org
+              </a>
+            </td>
+            <td>1ère</td>
           </tr>
         </tbody>
       </Table>

@@ -36,7 +36,7 @@ function App() {
           <Home setFooterFixed={setFooterFixed} />
         </Route>
         <Route path="/about-us">
-          <AboutUs />
+          <AboutUs setFooterFixed={setFooterFixed}/>
         </Route>
         <Route path="/read-last-articles">
           <ReadLastArticles

@@ -9,8 +9,14 @@ import { useTranslation } from "react-i18next";
 
 import { Helmet } from "react-helmet";
 
-const AboutUs = () => {
+import { useEffect } from 'react';
+
+const AboutUs = (props) => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    props.setFooterFixed(true);
+  });
 
   return (
     <Container className={classes.container}>
